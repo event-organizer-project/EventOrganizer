@@ -1,0 +1,9 @@
+name: Action
+on:
+  pull_request:
+    types: [opened, synchronize]
+
+jobs:
+  call-workflow:
+    name: Build 
+    uses: event-organizer-project/github-actions/.github/workflows/dotnet_build.yml@master

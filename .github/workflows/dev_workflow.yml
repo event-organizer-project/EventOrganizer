@@ -8,4 +8,5 @@ jobs:
     uses: event-organizer-project/github-actions/.github/workflows/dotnet_build.yml@master
 
   test:
+    needs: build
     uses: event-organizer-project/github-actions/.github/workflows/dotnet_test.yml@master

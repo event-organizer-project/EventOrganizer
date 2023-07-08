@@ -3,6 +3,9 @@ on:
   pull_request:
     types: [opened, synchronize]
 
+permissions:
+  pull-requests: write
+
 jobs:
   build:
     uses: event-organizer-project/github-actions/.github/workflows/dotnet_build.yml@master

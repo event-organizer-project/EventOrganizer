@@ -23,6 +23,11 @@ namespace EventOrganizer.Test.Core.Commands.EventCommands
         public void Setup()
         {
             fixture = new Fixture();
+
+            fixture.Behaviors.OfType<ThrowingRecursionBehavior>().ToList()
+                .ForEach(b => fixture.Behaviors.Remove(b));
+            fixture.Behaviors.Add(new OmitOnRecursionBehavior());
+
             fixture.Customize<DateOnly>(composer => composer.FromFactory<DateTime>(DateOnly.FromDateTime));
 
             eventRepositoryMock = new Mock<IEventRepository>();
@@ -32,7 +37,7 @@ namespace EventOrganizer.Test.Core.Commands.EventCommands
             underTest = new CreateEventCommand(eventRepositoryMock.Object, mapperMock.Object, userHandlerMock.Object);
         }
 
-        /*[Test]
+        [Test]
         public void Execute_Should_Return_Expected_Result()
         {
             var parameters = fixture.Create<CreateEventCommandParameters>();
@@ -58,6 +63,6 @@ namespace EventOrganizer.Test.Core.Commands.EventCommands
             var actualResult =  underTest.Execute(parameters);
 
             Assert.That(actualResult, Is.EqualTo(expectedResult));
-        }*/
+        }
     }
 }

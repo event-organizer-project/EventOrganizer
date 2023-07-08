@@ -4,6 +4,8 @@ on:
     types: [opened, synchronize]
 
 jobs:
-  call-workflow:
-    name: Build 
+  build:
     uses: event-organizer-project/github-actions/.github/workflows/dotnet_build.yml@master
+
+  test:
+    uses: event-organizer-project/github-actions/.github/workflows/dotnet_test.yml@master

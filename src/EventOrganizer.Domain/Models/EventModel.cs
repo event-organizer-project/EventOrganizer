@@ -20,22 +20,22 @@
         public RecurrenceType RecurrenceType { get; set; }
         // Event Time Settings
 
-        public virtual ICollection<EventTag> EventTags { get; set; }
+        public virtual ICollection<EventTag>? EventTags { get; set; }
 
-        public virtual ICollection<TagToEvent> TagToEvents { get; set; }
+        public virtual ICollection<TagToEvent>? TagToEvents { get; set; }
 
         public int OwnerId { get; set; }
 
         public virtual User Owner { get; set; }
 
-        public virtual ICollection<User> Members { get; set; }
+        public virtual ICollection<User>? Members { get; set; }
 
-        public virtual ICollection<EventInvolvement> EventInvolvements { get; set; }
+        public virtual ICollection<EventInvolvement>? EventInvolvements { get; set; }
 
-        public virtual ICollection<EventResult> EventResults { get; set; }
+        public virtual ICollection<EventResult>? EventResults { get; set; }
 
         public bool IsMessagingAllowed { get; set; }
 
-        public virtual ICollection<DialogueMessage> DialogueMessages { get; set; }
+        public virtual ICollection<DialogueMessage>? DialogueMessages { get; set; }
     }
 }

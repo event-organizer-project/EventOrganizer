@@ -9,7 +9,7 @@ using Moq;
 
 namespace EventOrganizer.Test.Core.Commands.EventCommands
 {
-    public class CreateEventCommandTest
+    public class CreateEventCommandTest : BaseTest<CreateEventCommand>
     {
         private CreateEventCommand underTest;
 
@@ -22,13 +22,7 @@ namespace EventOrganizer.Test.Core.Commands.EventCommands
         [SetUp]
         public void Setup()
         {
-            fixture = new Fixture();
-
-            fixture.Behaviors.OfType<ThrowingRecursionBehavior>().ToList()
-                .ForEach(b => fixture.Behaviors.Remove(b));
-            fixture.Behaviors.Add(new OmitOnRecursionBehavior());
-
-            fixture.Customize<DateOnly>(composer => composer.FromFactory<DateTime>(DateOnly.FromDateTime));
+            fixture = new CustomFixture();
 
             eventRepositoryMock = new Mock<IEventRepository>();
             mapperMock = new Mock<IMapper>();

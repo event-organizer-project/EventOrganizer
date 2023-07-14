@@ -94,7 +94,7 @@ namespace EventOrganizer.WebApi.Controllers
         public ActionResult<EventDetailDTO> Post([FromBody] EventDetailDTO eventView)
         {
             var result = createEventCommand.
-                Execute(new CreateEventCommandParameters { EventDetailDTO = eventView });
+                Execute(new CreateEventCommandParameters(eventView));
 
             return Ok(result);
         }
@@ -112,7 +112,7 @@ namespace EventOrganizer.WebApi.Controllers
         public ActionResult<EventDetailDTO> Put(EventDetailDTO eventView)
         {
             var result = updateEventCommand.
-                Execute(new UpdateEventCommandParameters { EventDetailDTO = eventView });
+                Execute(new UpdateEventCommandParameters(eventView));
 
             return Ok(result);
         }
